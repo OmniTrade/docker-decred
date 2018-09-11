@@ -1,6 +1,6 @@
 FROM ubuntu:xenial
 LABEL description="Docker Decred image"
-LABEL version="1.3.0-rc1"
+LABEL version="1.3.0-rc2"
 LABEL maintainer "jpbriquet"
 
 # Build command
