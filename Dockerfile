@@ -7,7 +7,7 @@ LABEL maintainer "jpbriquet"
 # docker build -t jpbriquet/decred:v1.2.0 .
 
 # Decred general info
-ENV DECRED_VERSION v1.3.0-rc1
+ENV DECRED_VERSION v1.3.0-rc2
 ENV DECRED_USER decred
 ENV DECRED_GROUP decred
 ENV DECRED_INSTALL /usr/local/decred
@@ -58,7 +58,9 @@ RUN \
 
 ENV PATH $PATH:$DECRED_INSTALL/bin
 
-USER $DECRED_USER
+#USER $DECRED_USER
+
+USER root
 
 # Working directories
 RUN mkdir $DCRD_HOME $DCRCTL_HOME $DCRWALLET_HOME \
