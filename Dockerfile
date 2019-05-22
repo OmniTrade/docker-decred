@@ -1,13 +1,10 @@
 FROM ubuntu:xenial
 LABEL description="Docker Decred image"
-LABEL version="1.3.0-rc2"
-LABEL maintainer "jpbriquet"
-
-# Build command
-# docker build -t jpbriquet/decred:v1.2.0 .
+LABEL version="1.4.0"
+LABEL maintainer="OmniTrade.io"
 
 # Decred general info
-ENV DECRED_VERSION v1.3.0-rc2
+ENV DECRED_VERSION v1.4.0
 ENV DECRED_USER decred
 ENV DECRED_GROUP decred
 ENV DECRED_INSTALL /usr/local/decred
@@ -50,7 +47,6 @@ RUN \
     # Set correct rights on executables
     && chown -R root.root bin \
     && chmod -R 755 bin \
-
     # Cleanup
     && apt-get -y remove $BUILD_DEPS \
     && apt-get clean \
@@ -58,11 +54,12 @@ RUN \
 
 ENV PATH $PATH:$DECRED_INSTALL/bin
 
-#USER $DECRED_USER
+# USER $DECRED_USER
 
 USER root
 
 # Working directories
 RUN mkdir $DCRD_HOME $DCRCTL_HOME $DCRWALLET_HOME \
     && chmod -R 700 $DECRED_HOME
+
 WORKDIR $DECRED_HOME
